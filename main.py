@@ -1,22 +1,27 @@
-from tkinter import *
+import tkinter as tk
 
-root = Tk()
-frame = Frame(root)
-root.rowconfigure(0, weight=1)
-root.columnconfigure(0, weight=1)
-frame.grid(row=0, column=0, sticky="news")
-grid = Frame(frame)
-grid.grid(sticky="news", column=0, row=7, columnspan=2)
-frame.rowconfigure(7, weight=1)
-frame.columnconfigure(0, weight=1)
+class App:
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title("Kéo Dãn Ô Lưới")
 
-#example values
-for x in range(10):
-    for y in range(5):
-        btn = Button(frame)
-        btn.grid(column=x, row=y, sticky="news")
+        # Tạo các widget
+        label1 = tk.Label(self.root, text="Widget 1", bg="red")
+        label2 = tk.Label(self.root, text="Widget 2", bg="green")
+        label3 = tk.Label(self.root, text="Widget 3", bg="blue")
 
-frame.columnconfigure(tuple(range(10)), weight=1)
-frame.rowconfigure(tuple(range(5)), weight=1)
+        # Đặt widget vào ô lưới
+        label1.grid(row=0, column=0, sticky="nsew")
+        label2.grid(row=1, column=0, sticky="nsew")
+        label3.grid(row=2, column=0, sticky="nsew")
 
-root.mainloop()
+        # Cài đặt thuộc tính weight cho hàng và cột
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_rowconfigure(1, weight=1)
+        self.root.grid_rowconfigure(2, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
+
+        # Hiển thị cửa sổ
+        self.root.mainloop()
+
+app = App()
